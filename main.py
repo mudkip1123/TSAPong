@@ -1,15 +1,16 @@
 import pyglet
 
 import load
+import ballPhysics
 
 win = pyglet.window.Window()
 
-ball = pyglet.sprite.Sprite(img=load.ball_sprite)
-ball.x = 300
+ball = ballPhysics.PhysicalBall(img=load.ball_sprite, x=300, y=300)
+ball.vX = 20
 
 
 def update(dt):
-	ball.x += 1
+	ball.update(dt)
 
 
 @win.event
@@ -17,5 +18,5 @@ def on_draw():
 	win.clear()
 	ball.draw()
 
-pyglet.clock.schedule_interval(update, 1 / 120.)
+pyglet.clock.schedule_interval(update, 1. / 120.)
 pyglet.app.run()
