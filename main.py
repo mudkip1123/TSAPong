@@ -10,7 +10,7 @@ b = pyglet.graphics.Batch()
 ball = ballPhysics.PhysicalBall()
 ball.x = 300
 ball.y = 300
-foll = objectFollower.Follower(img=load.block_sprite, batch=b, target=ball, speed=80.0)
+foll = objectFollower.Follower(img=load.block_sprite, target=ball, speed=80.0)
 foll.vY = 10.0
 
 
