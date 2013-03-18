@@ -33,8 +33,8 @@ def on_mouse_motion(x, y, dx, dy):
 @win.event
 def on_draw():
 	win.clear()
-	b.draw()
 	ball.draw()
+	foll.draw()
 
 pyglet.clock.schedule_interval(update, 1. / 120.)
 pyglet.app.run()
