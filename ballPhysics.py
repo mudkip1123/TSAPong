@@ -2,12 +2,12 @@ import pyglet
 
 
 class PhysicalBall():
-	def __init__(self, *args, **kwargs):
-		self.x = 0
-		self.y = 0
-		self.rotation = 0
-		self.vX = 0.0
-		self.vY = 0.0
+	def __init__(self, x=0, y=0, rotation=0, vX=0, vY=0):
+		self.x = x
+		self.y = y
+		self.rotation = rotation
+		self.vX = vX
+		self.vY = vY
 
 	def update(self, dt):
 		self.x += self.vX * dt
