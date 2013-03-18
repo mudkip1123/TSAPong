@@ -1,9 +1,10 @@
 import pyglet
 
 
-class PhysicalBall(pyglet.sprite.Sprite):
+class PhysicalBall():
 	def __init__(self, *args, **kwargs):
-		super(PhysicalBall, self).__init__(*args, **kwargs)
+		self.x = 0
+		self.y = 0
 		self.rotation = 0
 		self.vX = 0.0
 		self.vY = 0.0
