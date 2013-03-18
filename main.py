@@ -1,5 +1,4 @@
 import pyglet
-from pyglet.window import key
 
 import load
 import ballPhysics
@@ -35,6 +34,7 @@ def on_mouse_motion(x, y, dx, dy):
 def on_draw():
 	win.clear()
 	b.draw()
+	ball.draw()
 
 pyglet.clock.schedule_interval(update, 1. / 120.)
 pyglet.app.run()
