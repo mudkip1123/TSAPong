@@ -1,13 +1,14 @@
 import pyglet
+from pyglet.window import key
 
 import ballPhysics
 import objectFollower
 
 win = pyglet.window.Window(width=800, height=600)
-b = pyglet.graphics.Batch()
-
 ball = ballPhysics.PhysicalBall(x=300, y=300)
 foll = objectFollower.Follower(target=ball, speed=80.0)
+keys = key.KeyStateHandler()
+win.push_handlers(keys)
 
 
 def update(dt):
@@ -15,10 +16,11 @@ def update(dt):
 	foll.update(dt)
 
 
-@win.event
-def on_key_press(symbol, modifier):
-	pass
-
+def keyupdate():
+	if keys[key.A]:
+		ball.rotation += 5
+	if keys[key.D]:
+		ball.rotation -= 5
 
 @win.event
 def on_mouse_motion(x, y, dx, dy):
@@ -29,6 +31,7 @@ def on_mouse_motion(x, y, dx, dy):
 @win.event
 def on_draw():
 	win.clear()
+	keyupdate()
 	ball.draw()
 	foll.draw()
 
