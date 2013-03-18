@@ -21,6 +21,12 @@ def keyupdate():
 		ball.rotation += 5
 	if keys[key.D]:
 		ball.rotation -= 5
+	if keys[key.W]:
+		ball.pedal()
+	if keys[key.S]:
+		ball.dx *= .95
+		ball.dy *= .95
+
 
 @win.event
 def on_mouse_motion(x, y, dx, dy):
