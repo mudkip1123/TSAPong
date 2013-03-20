@@ -3,7 +3,7 @@ import pyglet
 import physics
 
 
-class PhysicalBall:
+class Ship:
 	def __init__(self, x=0, y=0, rotation=0, dx=0, dy=0):
 		self.x = x
 		self.y = y

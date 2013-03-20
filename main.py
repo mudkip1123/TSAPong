@@ -1,11 +1,11 @@
 import pyglet
 from pyglet.window import key
 
-import ballPhysics
+import playerShip
 import objectFollower
 
 win = pyglet.window.Window(width=800, height=600)
-ball = ballPhysics.PhysicalBall(x=300, y=300)
+ball = playerShip.Ship(x=300, y=300)
 foll = objectFollower.Follower(target=ball, speed=80.0)
 keys = key.KeyStateHandler()
 win.push_handlers(keys)
