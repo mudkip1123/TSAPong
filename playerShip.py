@@ -32,6 +32,8 @@ class Ship:
 		#Update shots
 		for i in self.rounds:
 			i.update(dt)
+			if i.lifetime <= 0:
+				self.rounds.remove(i)
 
 		#update self
 		self.x += self.vel.x * dt
