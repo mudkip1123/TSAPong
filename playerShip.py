@@ -1,27 +1,54 @@
 import pyglet
 
 import physics
+import bullet
 
 
 class Ship:
 	def __init__(self, x=0, y=0, rotation=0, dx=0, dy=0):
-		self.x = x
-		self.y = y
+		self.x, self.y = x, y
 		self.rotation = rotation
-		self.dx = dx
-		self.dy = dy
-		self.pointsX = [0, 2, 0, -2]
-		self.pointsY = [2, -2, -1, -2]
+		self.vel = physics.vector2(x=dx, y=dy)
+		self.pointsX = [2, -2, -1, -2]
+		self.pointsY = [0, -2, 0, 2]
+		self.rounds = []
+
+		self.burning = False
+		self.shooting = False
+		self.braking = False
+
+		self.shotTimer = 30
 
 	def update(self, dt):
-		self.x += self.dx * dt
-		self.y += self.dy * dt
+		# Counters
+		self.shotTimer -= 1
+
+		#Update key things
+		if self.burning:
+			self.burn()
+		if self.shooting and self.shotTimer <= 0:
+			self.shoot()
+
+		#Update shots
+		for i in self.rounds:
+			i.update(dt)
+
+		#update self
+		self.x += self.vel.x * dt
+		self.y += self.vel.y * dt
 		self.wraparound(dt)
 
-	def pedal(self):
-		self.dx, self.dy = physics.addAcceleration(self.dx, self.dy, self.rotation + 90, 10)
+	def burn(self):
+		self.vel = physics.addAcceleration(self.vel, self.rotation, 3)
+
+	def shoot(self):
+		self.rounds.append(bullet.Bullet(self.x, self.y, self.vel, self.rotation))
+		self.shotTimer = 30
 
 	def draw(self):
+		for i in self.rounds:
+			i.draw()
+
 		pointsX = [i * 10 for i in self.pointsX]
 		pointsY = [i * 10 for i in self.pointsY]
 
@@ -30,13 +57,13 @@ class Ship:
 		pyglet.graphics.draw(4, pyglet.gl.GL_LINE_LOOP, ('v2f', coords))
 
 	def wraparound(self, dt):
-		x, y, vx, vy = self.x, self.y, self.dx, self.dy
+		x, y, vx, vy = self.x, self.y, self.vel.x, self.vel.y
 
 		if x < 0 and vx < 0:
-			self.dx *= -1
+			self.vel.x *= -1
 		if x > 800 and vx > 0:
-			self.dx *= -1
+			self.vel.x *= -1
 		if y > 600 and vy > 0:
-			self.dy *= -1
+			self.vel.y *= -1
 		if y < 0 and vy < 0:
-			self.dy *= -1
+			self.vel.y *= -1
