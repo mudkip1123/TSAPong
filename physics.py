@@ -39,7 +39,7 @@ class vector2:
 		return vector2(x=self.x / self.magnitude(), y=self.y / self.magnitude())
 
 	def __iter__(self):
-		return [self.x,self.y].__iter__()
+		return [self.x, self.y].__iter__()
 
 	def __mul__(self, other):
 		return vector2(x=self.x * other, y=self.y * other)

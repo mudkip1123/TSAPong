@@ -2,7 +2,6 @@ import pyglet
 from pyglet.window import key
 
 import playerShip
-import objectFollower
 
 win = pyglet.window.Window(width=800, height=600)
 ball = playerShip.Ship(x=300, y=300)
@@ -25,7 +24,6 @@ def keyupdate():
 		ball.vel = ball.vel.__mul__(0.95)
 	ball.burning = keys[key.W]
 	ball.shooting = keys[key.SPACE]
-
 
 
 @win.event

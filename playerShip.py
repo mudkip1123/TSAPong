@@ -36,7 +36,7 @@ class Ship:
 		#update self
 		self.x += self.vel.x * dt
 		self.y += self.vel.y * dt
-		self.wraparound(dt)
+		self.wraparound()
 
 	def burn(self):
 		self.vel = physics.addAcceleration(self.vel, self.rotation, 3)
@@ -56,7 +56,7 @@ class Ship:
 
 		pyglet.graphics.draw(4, pyglet.gl.GL_LINE_LOOP, ('v2f', coords))
 
-	def wraparound(self, dt):
+	def wraparound(self):
 		x, y, vx, vy = self.x, self.y, self.vel.x, self.vel.y
 
 		if x < 0 and vx < 0:
