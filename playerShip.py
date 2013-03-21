@@ -36,6 +36,7 @@ class Ship:
 				self.rounds.remove(i)
 
 		#update self
+		self.vel *= .99
 		self.x += self.vel.x * dt
 		self.y += self.vel.y * dt
 		self.wraparound()

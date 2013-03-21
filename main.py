@@ -21,7 +21,7 @@ def keyupdate():
 	if keys[key.D]:
 		ball.rotation -= 2
 	if keys[key.S]:
-		ball.vel = ball.vel.__mul__(0.95)
+		ball.vel *= .95
 	ball.burning = keys[key.W]
 	ball.shooting = keys[key.SPACE]
 
