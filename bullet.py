@@ -4,7 +4,7 @@ import physics
 
 
 class Bullet:
-	def __init__(self, x, y, vel, rotation, lifetime=1000):
+	def __init__(self, x, y, vel, rotation, lifetime=450):
 		self.x, self.y = x, y
 		self.rotation = rotation
 		self.lifetime = lifetime
