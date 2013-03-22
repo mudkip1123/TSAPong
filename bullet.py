@@ -1,31 +1,21 @@
-import pyglet
-
 import physics
+import lineObject
 
 
-class Bullet:
-	def __init__(self, x, y, vel, rotation, lifetime=450):
-		self.x, self.y = x, y
-		self.rotation = rotation
+class Bullet(lineObject.Thing, object):
+	def __init__(self, lifetime=400, **kwargs):
+		super(Bullet, self).__init__(pointsX=[0, 1, -1], pointsY=[1, -1, -1], **kwargs)
 		self.lifetime = lifetime
-		self.pointsX = [0, 1, -1]
-		self.pointsY = [1, -1, -1]
-		self.vel = physics.addAcceleration(vel, self.rotation, 100)
+		self.vel = physics.addAcceleration(self.vel, self.rotation, 100)
 
 	def update(self, dt):
 		self.rotation += 10
 		self.lifetime -= 1
-		self.x += self.vel.x * dt
-		self.y += self.vel.y * dt
+		super(Bullet, self).update(dt)
 		self.wraparound()
 
-	def draw(self):
-		pointsX = [i * 3 for i in self.pointsX]
-		pointsY = [i * 3 for i in self.pointsY]
-
-		coords = physics.revolve(pointsX, pointsY, self.rotation, self.x, self.y)
-
-		pyglet.graphics.draw(3, pyglet.gl.GL_LINE_LOOP, ('v2f', coords))
+	def draw(self, scale=3):
+		super(Bullet, self).draw(3)
 
 	def wraparound(self):
 		if self.x > 800:

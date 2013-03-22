@@ -1,16 +1,11 @@
-import pyglet
-
 import physics
 import bullet
+import lineObject
 
 
-class Ship:
-	def __init__(self, x=0, y=0, rotation=0, dx=0, dy=0):
-		self.x, self.y = x, y
-		self.rotation = rotation
-		self.vel = physics.vector2(x=dx, y=dy)
-		self.pointsX = [2, -2, -1, -2]
-		self.pointsY = [0, -2, 0, 2]
+class Ship(lineObject.Thing, object):
+	def __init__(self, **kwargs):
+		super(Ship, self).__init__(pointsX=[2, -2, -1, -2], pointsY=[0, -2, 0, 2], **kwargs)
 		self.rounds = []
 
 		self.burning = False
@@ -37,27 +32,20 @@ class Ship:
 
 		#update self
 		self.vel *= .99
-		self.x += self.vel.x * dt
-		self.y += self.vel.y * dt
+		super(Ship, self).update(dt)
 		self.wraparound()
 
 	def burn(self):
 		self.vel = physics.addAcceleration(self.vel, self.rotation, 3)
 
 	def shoot(self):
-		self.rounds.append(bullet.Bullet(self.x, self.y, self.vel, self.rotation))
+		self.rounds.append(bullet.Bullet(x=self.x, y=self.y, vel=self.vel, rotation=self.rotation))
 		self.shotTimer = 30
 
-	def draw(self):
+	def draw(self, scale=10):
 		for i in self.rounds:
 			i.draw()
-
-		pointsX = [i * 10 for i in self.pointsX]
-		pointsY = [i * 10 for i in self.pointsY]
-
-		coords = physics.revolve(pointsX, pointsY, self.rotation, self.x, self.y)
-
-		pyglet.graphics.draw(4, pyglet.gl.GL_LINE_LOOP, ('v2f', coords))
+		super(Ship, self).draw(10)
 
 	def wraparound(self):
 		x, y, vx, vy = self.x, self.y, self.vel.x, self.vel.y

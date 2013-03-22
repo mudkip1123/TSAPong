@@ -43,3 +43,6 @@ class vector2:
 
 	def __mul__(self, other):
 		return vector2(x=self.x * other, y=self.y * other)
+
+	def __add__(self, other):
+		return vector2(x=self.x + math.cos(other), y=self.y + math.sin(other))
