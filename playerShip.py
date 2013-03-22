@@ -3,7 +3,7 @@ import bullet
 import lineObject
 
 
-class Ship(lineObject.Thing, object):
+class Ship(lineObject.Thing):
 	def __init__(self, **kwargs):
 		super(Ship, self).__init__(pointsX=[2, -2, -1, -2], pointsY=[0, -2, 0, 2], **kwargs)
 		self.rounds = []

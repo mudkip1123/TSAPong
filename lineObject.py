@@ -3,7 +3,7 @@ import pyglet
 import physics
 
 
-class Thing:
+class Thing(object):
 	def __init__(self, pointsX=None, pointsY=None, **kwargs):
 		self.pointsX = pointsX
 		self.pointsY = pointsY

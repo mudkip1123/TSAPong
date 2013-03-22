@@ -2,7 +2,7 @@ import physics
 import lineObject
 
 
-class Bullet(lineObject.Thing, object):
+class Bullet(lineObject.Thing):
 	def __init__(self, lifetime=400, **kwargs):
 		super(Bullet, self).__init__(pointsX=[0, 1, -1], pointsY=[1, -1, -1], **kwargs)
 		self.lifetime = lifetime
