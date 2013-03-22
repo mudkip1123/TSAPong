@@ -15,7 +15,7 @@ class Bullet(lineObject.Thing):
 		self.wraparound()
 
 	def draw(self, scale=3):
-		super(Bullet, self).draw(3)
+		super(Bullet, self).draw(scale)
 
 	def wraparound(self):
 		if self.x > 800:
