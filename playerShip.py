@@ -45,7 +45,7 @@ class Ship(lineObject.Thing):
 	def draw(self, scale=10):
 		for i in self.rounds:
 			i.draw()
-		super(Ship, self).draw(10)
+		super(Ship, self).draw(scale)
 
 	def wraparound(self):
 		x, y, vx, vy = self.x, self.y, self.vel.x, self.vel.y
