@@ -30,7 +30,7 @@ class Ship(lineObject.Thing):
 			if i.lifetime <= 0:
 				self.rounds.remove(i)
 
-		#update self
+		#Update self
 		self.vel *= .99
 		super(Ship, self).update(dt)
 		self.wraparound()
