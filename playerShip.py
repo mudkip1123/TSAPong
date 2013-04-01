@@ -1,3 +1,5 @@
+import math
+
 import physics
 import bullet
 import lineObject
@@ -39,7 +41,9 @@ class Ship(lineObject.Thing):
 		self.vel = physics.addAcceleration(self.vel, self.rotation, 3)
 
 	def shoot(self):
-		self.rounds.append(bullet.Bullet(x=self.x, y=self.y, vel=self.vel, rotation=self.rotation))
+		bx = self.x + 20 * math.cos(math.radians(self.rotation))
+		by = self.y + 20 * math.sin(math.radians(self.rotation))
+		self.rounds.append(bullet.Bullet(x=bx, y=by, vel=self.vel, rotation=self.rotation))
 		self.shotTimer = 30
 
 	def draw(self, scale=10):
