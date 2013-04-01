@@ -2,9 +2,11 @@ import pyglet
 from pyglet.window import key
 
 import playerShip
+import asteroid
 
 win = pyglet.window.Window(width=800, height=600)
 ball = playerShip.Ship(x=300, y=300)
+a = asteroid.buildAsteroidField(ball)
 #foll = objectFollower.Follower(target=ball, speed=80.0)
 keys = key.KeyStateHandler()
 win.push_handlers(keys)
@@ -12,6 +14,8 @@ win.push_handlers(keys)
 
 def update(dt):
 	ball.update(dt)
+	for i in a:
+		i.update(dt)
 	#foll.update(dt)
 
 
@@ -37,6 +41,8 @@ def on_draw():
 	win.clear()
 	keyupdate()
 	ball.draw()
+	for i in a:
+		i.draw()
 	#foll.draw()
 
 pyglet.clock.schedule_interval(update, 1. / 120.)

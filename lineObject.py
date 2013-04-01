@@ -12,7 +12,7 @@ class Thing(object):
 		self.y = kwargs.get("y", 0)
 		self.rotation = kwargs.get("rotation", 0)
 
-	def draw(self, scale):
+	def draw(self, scale=1):
 		pointsX = [i * scale for i in self.pointsX]
 		pointsY = [i * scale for i in self.pointsY]
 		coords = physics.revolve(pointsX, pointsY, self.rotation, self.x, self.y)
@@ -21,3 +21,17 @@ class Thing(object):
 	def update(self, dt):
 		self.x += self.vel.x * dt
 		self.y += self.vel.y * dt
+		self.wraparound()
+
+	def wraparound(self):
+		if self.x > 800:
+			self.x = 0
+		if self.x < 0:
+			self.x = 800
+		if self.y > 600:
+			self.y = 0
+		if self.y < 0:
+			self.y = 600
+
+		self.x = max(min(self.x, 800), 0)
+		self.y = max(min(self.y, 600), 0)

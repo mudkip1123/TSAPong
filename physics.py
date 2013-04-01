@@ -27,6 +27,10 @@ def addAcceleration(velocity, rotation, force):
 	return vector2(x=new_vx, y=new_vy)
 
 
+def distance(x1, y1, x2, y2):
+	return math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+
+
 class vector2:
 	def __init__(self, **kwargs):
 		self.x = kwargs.get('x')
