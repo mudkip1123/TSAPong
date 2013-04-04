@@ -15,7 +15,7 @@ class Ship(lineObject.Thing):
 		self.shooting = False
 		self.braking = False
 
-		self.shotTimer = 30
+		self.shotTimer = 3
 		self.turnSpeed = 5
 		self.enginePower = 10
 
