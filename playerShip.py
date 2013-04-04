@@ -17,6 +17,7 @@ class Ship(lineObject.Thing):
 
 		self.shotTimer = 30
 		self.turnSpeed = 5
+		self.enginePower = 10
 
 	def update(self, dt):
 		# Counters
@@ -40,7 +41,7 @@ class Ship(lineObject.Thing):
 		self.wraparound()
 
 	def burn(self):
-		self.vel = physics.addAcceleration(self.vel, self.rotation, 3)
+		self.vel = physics.addAcceleration(self.vel, self.rotation, self.enginePower)
 
 	def shoot(self):
 		bx = self.x + 20 * math.cos(math.radians(self.rotation))
