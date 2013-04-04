@@ -8,7 +8,7 @@ import load
 
 class Ship(lineObject.Thing):
 	def __init__(self, **kwargs):
-		super(Ship, self).__init__(pointsX=[2, -2, -1, -2], pointsY=[0, -2, 0, 2], **kwargs)
+		super(Ship, self).__init__(pointsX=[1.5, -1.5, -1, -1.5], pointsY=[0, -1, 0, 1], **kwargs)
 		self.rounds = []
 
 		self.burning = False
