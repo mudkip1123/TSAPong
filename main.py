@@ -21,9 +21,9 @@ def update(dt):
 
 def keyupdate():
 	if keys[key.A]:
-		ball.rotation += 2
+		ball.rotation += ball.turnSpeed
 	if keys[key.D]:
-		ball.rotation -= 2
+		ball.rotation -= ball.turnSpeed
 	if keys[key.S]:
 		ball.vel *= .95
 	ball.burning = keys[key.W]

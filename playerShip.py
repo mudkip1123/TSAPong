@@ -16,6 +16,7 @@ class Ship(lineObject.Thing):
 		self.braking = False
 
 		self.shotTimer = 30
+		self.turnSpeed = 5
 
 	def update(self, dt):
 		# Counters
