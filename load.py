@@ -11,6 +11,7 @@ def center_anchor(image):
 ball_sprite = pyglet.resource.image("ballBlue.png")
 paddle_sprite = pyglet.resource.image("paddleBlu.png")
 block_sprite = pyglet.resource.image("element_red_rectangle.png")
+shot_sound = pyglet.media.load("res/bop.wav", streaming=False)
 
 center_anchor(ball_sprite)
 center_anchor(paddle_sprite)
