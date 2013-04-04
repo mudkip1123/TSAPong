@@ -14,7 +14,7 @@ class Asteroid(lineObject.Thing):
 		pointsX = []
 		pointsY = []
 		for i in range(verticies):
-			rad = random.randint(size - 4, size + 4)
+			rad = random.randint(size - 8, size + 8)
 			part = math.radians(360 / verticies * i)
 			pointsX.append(math.cos(part) * rad)
 			pointsY.append(math.sin(part) * rad)
