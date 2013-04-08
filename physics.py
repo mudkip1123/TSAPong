@@ -10,14 +10,14 @@ def intersect(A, B, C, D):
 	return ccw(A, C, D) != ccw(B, C, D) and ccw(A, B, C) != ccw(A, B, D)
 
 
-def revolve(lo):
+def revolve(pointsX, pointsY, rotation, dx=0, dy=0):
 	coords = []
-	for i in range(len(lo.pointsX)):
-		x = lo.pointsX[i]
-		y = lo.pointsY[i]
-		theta = math.radians(lo.rotation)
-		coords.append(x * math.cos(theta) - y * math.sin(theta) + lo.dx)
-		coords.append(x * math.sin(theta) + y * math.cos(theta) + lo.dy)
+	for i in range(len(pointsX)):
+		x = pointsX[i]
+		y = pointsY[i]
+		theta = math.radians(rotation)
+		coords.append(x * math.cos(theta) - y * math.sin(theta) + dx)
+		coords.append(x * math.sin(theta) + y * math.cos(theta) + dy)
 	return coords
 
 
