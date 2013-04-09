@@ -42,11 +42,9 @@ class Thing(object):
 
 	def segments(self):
 		coords = self.coord_shift()
-		p = [(i[j], i[j + 1]) for i in [coords] for j in range(0, len(i) - 1, 2)]
-		# print p
+		p = [(coords[j], coords[j + 1]) for j in range(0, len(coords) - 1, 2)]
 		points = [physics.point(k[0], k[1]) for k in p]
 		s = []
-
 		for i in range(len(points) - 1):
 			s.append(physics.segment(points[i], points[i + 1]))
 
