@@ -39,3 +39,15 @@ class Thing(object):
 			self.y = 600
 		self.x = max(min(self.x, 800), 0)
 		self.y = max(min(self.y, 600), 0)
+
+	def segments(self):
+		coords = self.coord_shift()
+		p = [(i[j], i[j + 1]) for i in [coords] for j in range(0, len(i) - 1, 2)]
+		# print p
+		points = [physics.point(k[0], k[1]) for k in p]
+		s = []
+
+		for i in range(len(points) - 1):
+			s.append(physics.segment(points[i], points[i + 1]))
+
+		return s
