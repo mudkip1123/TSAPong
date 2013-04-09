@@ -44,10 +44,8 @@ def on_draw():
 	win.clear()
 	dyn = segment(10., 10., win._mouse_x, win._mouse_y)
 	
-	pyglet.graphics.draw(2, pyglet.gl.GL_LINES,
-		('v2f', tuple(stat)))
-	pyglet.graphics.draw(2, pyglet.gl.GL_LINES,
-		('v2f', tuple(dyn)))
+	pyglet.graphics.draw(2, pyglet.gl.GL_LINES, ('v2f', tuple(stat)))
+	pyglet.graphics.draw(2, pyglet.gl.GL_LINES, ('v2f', tuple(dyn)))
 	print intersect(dyn.p1, dyn.p2, stat.p1, stat.p2)
 
 

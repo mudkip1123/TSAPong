@@ -11,7 +11,7 @@ class Thing(object):
 		self.x = kwargs.get("x", 0)
 		self.y = kwargs.get("y", 0)
 		self.rotation = kwargs.get("rotation", 0)
-		self.scale = kwargs.get('scale',1)
+		self.scale = kwargs.get('scale', 1)
 
 	def coord_shift(self):
 		pointsX = [i * self.scale for i in self.pointsX]
@@ -47,5 +47,4 @@ class Thing(object):
 		s = []
 		for i in range(len(points) - 1):
 			s.append(physics.segment(points[i], points[i + 1]))
-
 		return s

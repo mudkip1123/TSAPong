@@ -26,7 +26,7 @@ class Asteroid(lineObject.Thing):
 		super(Asteroid, self).update(dt)
 
 
-def buildAsteroidField(player):
+def buildAsteroidField():
 	asteroids = []
 	for i in range(10):
 		asteroid = Asteroid(radius=40)

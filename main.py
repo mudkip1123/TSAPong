@@ -6,7 +6,7 @@ import asteroid
 
 win = pyglet.window.Window(width=800, height=600)
 ball = playerShip.Ship(x=300, y=300)
-a = asteroid.buildAsteroidField(ball)
+a = asteroid.buildAsteroidField()
 #foll = objectFollower.Follower(target=ball, speed=80.0)
 keys = key.KeyStateHandler()
 win.push_handlers(keys)
