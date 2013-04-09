@@ -11,6 +11,7 @@ class Thing(object):
 		self.x = kwargs.get("x", 0)
 		self.y = kwargs.get("y", 0)
 		self.rotation = kwargs.get("rotation", 0)
+		self.scale = kwargs.get('scale',1)
 
 	def coord_shift(self):
 		pointsX = [i * self.scale for i in self.pointsX]
@@ -36,6 +37,5 @@ class Thing(object):
 			self.y = 0
 		if self.y < 0:
 			self.y = 600
-
 		self.x = max(min(self.x, 800), 0)
 		self.y = max(min(self.y, 600), 0)

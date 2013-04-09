@@ -8,10 +8,12 @@ class Bullet(lineObject.Thing):
 		self.lifetime = lifetime
 		self.vel = physics.addAcceleration(self.vel, self.rotation, 100)
 
+		self.scale = 3
+
 	def update(self, dt):
 		self.rotation += 10
 		self.lifetime -= 1
 		super(Bullet, self).update(dt)
 
-	def draw(self, scale=3):
-		super(Bullet, self).draw(scale)
+	def draw(self):
+		super(Bullet, self).draw()

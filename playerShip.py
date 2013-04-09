@@ -18,6 +18,7 @@ class Ship(lineObject.Thing):
 		self.shotTimer = 3
 		self.turnSpeed = 5
 		self.enginePower = 10
+		self.scale = 10
 
 	def update(self, dt):
 		# Counters
@@ -50,10 +51,10 @@ class Ship(lineObject.Thing):
 		self.shotTimer = 30
 		load.shot_sound.play()
 
-	def draw(self, scale=10):
+	def draw(self):
 		for i in self.rounds:
 			i.draw()
-		super(Ship, self).draw(scale)
+		super(Ship, self).draw()
 
 	def wraparound(self):
 		x, y, vx, vy = self.x, self.y, self.vel.x, self.vel.y
