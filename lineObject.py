@@ -12,11 +12,15 @@ class Thing(object):
 		self.y = kwargs.get("y", 0)
 		self.rotation = kwargs.get("rotation", 0)
 
-	def draw(self, scale=1):
-		pointsX = [i * scale for i in self.pointsX]
-		pointsY = [i * scale for i in self.pointsY]
+	def coord_shift(self):
+		pointsX = [i * self.scale for i in self.pointsX]
+		pointsY = [i * self.scale for i in self.pointsY]
 		coords = physics.revolve(pointsX, pointsY, self.rotation, self.x, self.y)
-		pyglet.graphics.draw(len(pointsX), pyglet.gl.GL_LINE_LOOP, ('v2f', coords))
+		return coords
+
+	def draw(self):
+		coords = self.coord_shift()
+		pyglet.graphics.draw(len(coords) / 2, pyglet.gl.GL_LINE_LOOP, ('v2f', coords))
 
 	def update(self, dt):
 		self.x += self.vel.x * dt
