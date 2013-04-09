@@ -31,6 +31,31 @@ def distance(x1, y1, x2, y2):
 	return math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
 
 
+class point:
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
+
+	def pt(self):
+		return [self.x, self.y]
+
+
+class segment:
+	def __init__(self, *args):
+		if len(args) == 2:
+			self.p1 = args[0]
+			self.p2 = args[1]
+		elif len(args) == 4:
+			self.p1 = point(args[0], args[1])
+			self.p2 = point(args[2], args[3])
+
+	def inter(self, other):
+		return intersect(self.p1, self.p2, other.p1, other.p2)
+
+	def points(self):
+		return [self.p1.x, self.p1.y, self.p2.x, self.p2.y]
+
+
 class vector2:
 	def __init__(self, **kwargs):
 		self.x = kwargs.get('x')
