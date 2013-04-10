@@ -7,15 +7,15 @@ import physics
 
 class Asteroid(lineObject.Thing):
 	def __init__(self, **kwargs):
+		self.radius = kwargs.get('radius', 40)
 		pointsX, pointsY = self.generate()
-		self.radius = kwargs.get('radius')
 		super(Asteroid, self).__init__(pointsX=pointsX, pointsY=pointsY, **kwargs)
 
-	def generate(self, size=40, verticies=15):
+	def generate(self, verticies=15):
 		pointsX = []
 		pointsY = []
 		for i in range(verticies):
-			rad = random.randint(size - 8, size + 8)
+			rad = random.randint(self.radius - 8, self.radius + 8)
 			part = math.radians(360 / verticies * i)
 			pointsX.append(math.cos(part) * rad)
 			pointsY.append(math.sin(part) * rad)
