@@ -67,6 +67,12 @@ class vector2:
 	def normalized(self):
 		return vector2(x=self.x / self.magnitude(), y=self.y / self.magnitude())
 
+	def rotate(self, degrees):
+		radians = math.radians(degrees)
+		nx = math.cos(math.acos(self.normalized().x) + radians) * self.magnitude()
+		ny = math.sin(math.asin(self.normalized().y) + radians) * self.magnitude()
+		return vector2(x=nx, y=ny)
+
 	def __iter__(self):
 		return [self.x, self.y].__iter__()
 

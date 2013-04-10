@@ -3,6 +3,7 @@ from pyglet.window import key
 
 import playerShip
 import asteroid
+import physics
 
 win = pyglet.window.Window(width=800, height=600)
 ball = playerShip.Ship(x=300, y=300)
@@ -13,10 +14,22 @@ win.push_handlers(keys)
 
 
 def update(dt):
+	global a
 	ball.update(dt)
 	for i in a:
 		i.update(dt)
-	#foll.update(dt)
+
+	for shot in ball.rounds:
+		for asteroid in a:
+			if shot.collide(asteroid):
+				ball.rounds.remove(shot)
+				c, b = asteroid.die()
+				a.append(b)
+				a.append(c)
+				a.remove(asteroid)
+				break
+
+	a = [i for i in a if i is not None]
 
 
 def keyupdate():
