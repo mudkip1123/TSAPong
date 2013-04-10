@@ -54,3 +54,4 @@ class Thing(object):
 			for j in other.segments():
 				if i.inter(j):
 					return True
+		return False
