@@ -48,3 +48,9 @@ class Thing(object):
 		for i in range(len(points) - 1):
 			s.append(physics.segment(points[i], points[i + 1]))
 		return s
+
+	def collide(self, other):
+		for i in self.segments():
+			for j in other.segments():
+				if i.inter(j):
+					return True
