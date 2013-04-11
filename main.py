@@ -19,7 +19,7 @@ def update(dt):
 
 	for shot in ball.rounds:
 		for asteroid in a:
-			if shot.collide(asteroid):
+			if asteroid is not None and shot.collide(asteroid):
 				ball.rounds.remove(shot)
 				c, b = asteroid.die()
 				a.append(b)
