@@ -28,6 +28,10 @@ def update(dt):
 				break
 
 	a = [i for i in a if i is not None]
+	for asteroid in a:
+		if ball.collide(asteroid):
+			pass
+
 
 
 def keyupdate():
