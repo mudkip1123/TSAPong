@@ -9,10 +9,11 @@ ball = playerShip.Ship(x=400, y=300)
 a = asteroid.buildAsteroidField()
 keys = key.KeyStateHandler()
 win.push_handlers(keys)
+score = 0
 
 
 def update(dt):
-	global a
+	global a, score
 	ball.update(dt)
 	for i in a:
 		i.update(dt)
@@ -25,6 +26,7 @@ def update(dt):
 				a.append(b)
 				a.append(c)
 				a.remove(asteroid)
+				score += 10
 				break
 
 	a = [i for i in a if i is not None]
