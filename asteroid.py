@@ -37,9 +37,9 @@ class Asteroid(lineObject.Thing):
 		return child1, child2
 
 
-def buildAsteroidField():
+def buildAsteroidField(number):
 	asteroids = []
-	for i in range(10):
+	for i in range(number):
 		asteroid = Asteroid(radius=40)
 		asteroid.x = random.randint(0, 800)
 		asteroid.y = random.randint(0, 600)

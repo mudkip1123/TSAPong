@@ -6,7 +6,7 @@ import asteroid
 
 win = pyglet.window.Window(width=800, height=600)
 ball = playerShip.Ship(x=400, y=300)
-a = asteroid.buildAsteroidField()
+a = asteroid.buildAsteroidField(10)
 keys = key.KeyStateHandler()
 win.push_handlers(keys)
 score = 0
@@ -33,7 +33,6 @@ def update(dt):
 	for asteroid in a:
 		if ball.collide(asteroid):
 			pass
-
 
 
 def keyupdate():
