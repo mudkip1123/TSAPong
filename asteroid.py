@@ -43,6 +43,6 @@ def buildAsteroidField(number):
 		asteroid = Asteroid(radius=40)
 		asteroid.x = random.randint(0, 800)
 		asteroid.y = random.randint(0, 600)
-		asteroid.vel = physics.vector2(x=random.randint(-50, 50), y=random.randint(-50, 50))
+		asteroid.vel = physics.vector2(x=random.randint(-100, 100), y=random.randint(-100, 100))
 		asteroids.append(asteroid)
 	return asteroids
