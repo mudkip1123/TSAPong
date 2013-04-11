@@ -15,7 +15,8 @@ class Ship(lineObject.Thing):
 		self.shooting = False
 		self.braking = False
 
-		self.shotTimer = 3
+		self.shotDelay = 10
+		self.shotTimer = self.shotDelay
 		self.turnSpeed = 6
 		self.enginePower = 10
 		self.scale = 10
@@ -48,7 +49,7 @@ class Ship(lineObject.Thing):
 		bx = self.x + 20 * math.cos(math.radians(self.rotation))
 		by = self.y + 20 * math.sin(math.radians(self.rotation))
 		self.rounds.append(bullet.Bullet(x=bx, y=by, vel=self.vel, rotation=self.rotation))
-		self.shotTimer = 30
+		self.shotTimer = self.shotDelay
 		load.shot_sound.play()
 
 	def draw(self):
