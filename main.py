@@ -16,7 +16,7 @@ score_text = pyglet.text.Label(text='', x=0, y=590)
 
 
 def update(dt):
-	global rocks, score
+	global rocks, score, lives
 	ball.update(dt)
 	for i in rocks:
 		i.update(dt)
@@ -35,7 +35,8 @@ def update(dt):
 	rocks = [i for i in rocks if i is not None]
 	for rock in rocks:
 		if ball.collide(rock):
-			pass
+			ball.reset()
+			lives -= 1
 	score_text.text = str(score)
 
 
