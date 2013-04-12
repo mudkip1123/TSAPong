@@ -7,7 +7,7 @@ import physics
 
 win = pyglet.window.Window(width=800, height=600)
 ball = playerShip.Ship(x=400, y=300, scale=10)
-rocks = asteroid.buildAsteroidField(3)
+rocks = asteroid.buildAsteroidField(1)
 keys = key.KeyStateHandler()
 win.push_handlers(keys)
 
