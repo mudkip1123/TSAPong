@@ -37,7 +37,7 @@ class Ship(lineObject.Thing):
 				self.rounds.remove(i)
 
 		#Update self
-		self.vel *= .99
+		self.vel *= .983
 		super(Ship, self).update(dt)
 		self.wraparound()
 
