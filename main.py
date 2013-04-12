@@ -7,6 +7,7 @@ import asteroid
 win = pyglet.window.Window(width=800, height=600)
 ball = playerShip.Ship(x=400, y=300)
 a = asteroid.buildAsteroidField(10)
+rocks = asteroid.buildAsteroidField(3)
 keys = key.KeyStateHandler()
 win.push_handlers(keys)
 score = 0

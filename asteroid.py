@@ -40,7 +40,7 @@ class Asteroid(lineObject.Thing):
 def buildAsteroidField(number):
 	asteroids = []
 	for i in range(number):
-		asteroid = Asteroid(radius=40)
+		asteroid = Asteroid(size=8)
 		asteroid.x = random.randint(0, 800)
 		asteroid.y = random.randint(0, 600)
 		asteroid.vel = physics.vector2(x=random.randint(-100, 100), y=random.randint(-100, 100))
