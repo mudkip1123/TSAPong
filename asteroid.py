@@ -25,6 +25,8 @@ class Asteroid(lineObject.Thing):
 
 	def update(self, dt):
 		self.rotation += .3
+		if self.vel.magnitude() > 150:
+			self.vel *= .99
 		super(Asteroid, self).update(dt)
 
 	def die(self):
