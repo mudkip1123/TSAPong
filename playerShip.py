@@ -67,3 +67,10 @@ class Ship(lineObject.Thing):
 			self.vel.y *= -1
 		if y < 0 and vy < 0:
 			self.vel.y *= -1
+
+	def reset(self):
+		self.x = 400
+		self.y = 300
+		self.rotation = 0
+		self.vel = physics.vector2(x=0, y=0)
+		self.rounds = []
