@@ -9,6 +9,7 @@ ball = playerShip.Ship(x=400, y=300, scale=10)
 rocks = asteroid.buildAsteroidField(3)
 keys = key.KeyStateHandler()
 win.push_handlers(keys)
+
 score = 0
 lives = 3
 
