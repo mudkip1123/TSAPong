@@ -39,6 +39,9 @@ class point:
 	def pt(self):
 		return [self.x, self.y]
 
+	def distance(self, other):
+		return math.sqrt((other.x - self.x) ** 2 + (other.y - self.y) ** 2)
+
 
 class segment:
 	def __init__(self, *args):
