@@ -19,6 +19,9 @@ class Thing(object):
 		coords = physics.revolve(pointsX, pointsY, self.rotation, self.x, self.y)
 		return coords
 
+	def distance(self, other):
+		return physics.distance(self.x, self.y, other.x, other.y)
+
 	def draw(self):
 		coords = self.coord_shift()
 		pyglet.graphics.draw(len(coords) / 2, pyglet.gl.GL_LINE_LOOP, ('v2f', coords))

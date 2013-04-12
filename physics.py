@@ -40,7 +40,7 @@ class point:
 		return [self.x, self.y]
 
 	def distance(self, other):
-		return math.sqrt((other.x - self.x) ** 2 + (other.y - self.y) ** 2)
+		return distance(self.x, self.y, other.x, other.y)
 
 
 class segment:
