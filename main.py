@@ -3,6 +3,7 @@ from pyglet.window import key
 
 import playerShip
 import asteroid
+import physics
 
 win = pyglet.window.Window(width=800, height=600)
 ball = playerShip.Ship(x=400, y=300, scale=10)
@@ -37,6 +38,9 @@ def update(dt):
 		if ball.collide(rock):
 			ball.reset()
 			lives -= 1
+	if not rocks:
+		ball.reset()
+		rocks = asteroid.buildAsteroidField(2)
 	score_text.text = str(score)
 
 
