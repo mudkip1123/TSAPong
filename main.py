@@ -22,19 +22,19 @@ def update(dt):
 		i.update(dt)
 
 	for shot in ball.rounds:
-		for asteroid in rocks:
-			if asteroid is not None and shot.collide(asteroid):
+		for rock in rocks:
+			if rock is not None and shot.collide(rock):
 				ball.rounds.remove(shot)
-				c, b = asteroid.die()
+				c, b = rock.die()
 				rocks.append(b)
 				rocks.append(c)
-				rocks.remove(asteroid)
+				rocks.remove(rock)
 				score += 10
 				break
 
 	rocks = [i for i in rocks if i is not None]
-	for asteroid in rocks:
-		if ball.collide(asteroid):
+	for rock in rocks:
+		if ball.collide(rock):
 			pass
 	score_text.text = str(score)
 
