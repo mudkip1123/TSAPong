@@ -6,7 +6,6 @@ import asteroid
 
 win = pyglet.window.Window(width=800, height=600)
 ball = playerShip.Ship(x=400, y=300)
-a = asteroid.buildAsteroidField(10)
 rocks = asteroid.buildAsteroidField(3)
 keys = key.KeyStateHandler()
 win.push_handlers(keys)
@@ -14,24 +13,24 @@ score = 0
 
 
 def update(dt):
-	global a, score
+	global rocks, score
 	ball.update(dt)
-	for i in a:
+	for i in rocks:
 		i.update(dt)
 
 	for shot in ball.rounds:
-		for asteroid in a:
+		for asteroid in rocks:
 			if asteroid is not None and shot.collide(asteroid):
 				ball.rounds.remove(shot)
 				c, b = asteroid.die()
-				a.append(b)
-				a.append(c)
-				a.remove(asteroid)
+				rocks.append(b)
+				rocks.append(c)
+				rocks.remove(asteroid)
 				score += 10
 				break
 
-	a = [i for i in a if i is not None]
-	for asteroid in a:
+	rocks = [i for i in rocks if i is not None]
+	for asteroid in rocks:
 		if ball.collide(asteroid):
 			pass
 
@@ -58,7 +57,7 @@ def on_draw():
 	win.clear()
 	keyupdate()
 	ball.draw()
-	for i in a:
+	for i in rocks:
 		i.draw()
 
 pyglet.clock.schedule_interval(update, 1. / 120.)
