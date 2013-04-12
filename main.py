@@ -10,6 +10,7 @@ rocks = asteroid.buildAsteroidField(3)
 keys = key.KeyStateHandler()
 win.push_handlers(keys)
 score = 0
+lives = 3
 
 
 def update(dt):
@@ -57,6 +58,8 @@ def on_draw():
 	win.clear()
 	keyupdate()
 	ball.draw()
+	for i in range(lives):
+		playerShip.Ship(scale=5, rotation=180, x=790 - (i * 20), y=590).draw()
 	for i in rocks:
 		i.draw()
 
