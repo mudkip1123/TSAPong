@@ -3,7 +3,6 @@ from pyglet.window import key
 
 import playerShip
 import asteroid
-import physics
 
 win = pyglet.window.Window(width=800, height=600)
 ball = playerShip.Ship(x=400, y=300, scale=10)
@@ -11,13 +10,14 @@ rocks = asteroid.buildAsteroidField(1)
 keys = key.KeyStateHandler()
 win.push_handlers(keys)
 
+level = 1
 score = 0
 lives = 3
 score_text = pyglet.text.Label(text='', x=0, y=590)
 
 
 def update(dt):
-	global rocks, score, lives
+	global rocks, score, lives, level
 	ball.update(dt)
 	for i in rocks:
 		i.update(dt)
@@ -40,7 +40,8 @@ def update(dt):
 			lives -= 1
 	if not rocks:
 		ball.reset()
-		rocks = asteroid.buildAsteroidField(2)
+		rocks = asteroid.buildAsteroidField(level)
+		level += 1
 	score_text.text = str(score)
 
 
