@@ -17,14 +17,28 @@ lives = 3
 score_text = pyglet.text.Label(text='', x=0, y=585)
 
 
+def resetgame():
+	global level, lives, score, respawncounter, rocks
+	level = 1
+	lives = 3
+	score = 0
+	ball.x = 10000
+	respawncounter = 120
+	rocks = []
+
+
 def update(dt):
 	global rocks, score, lives, level, respawncounter
 	if respawncounter > 0:
 		respawncounter -= 1
-		return
-	if respawncounter == 0:
+	elif respawncounter == 0:
 		ball.reset()
 		respawncounter = -1
+	else:
+		ball.update(dt)
+
+	if lives == 0:
+		resetgame()
 	ball.update(dt)
 	for i in rocks:
 		i.update(dt)
@@ -45,7 +59,7 @@ def update(dt):
 		if ball.collide(rock):
 			lives -= 1
 			ball.x = 10000
-			respawncounter = 240
+			respawncounter = 60
 	if not rocks:
 		rocks = asteroid.buildAsteroidField(level)
 		level += 1
