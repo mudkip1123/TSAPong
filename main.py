@@ -78,12 +78,6 @@ def keyupdate():
 
 
 @win.event
-def on_mouse_motion(x, y, dx, dy):
-	ball.x = x
-	ball.y = y
-
-
-@win.event
 def on_draw():
 	win.clear()
 	keyupdate()
