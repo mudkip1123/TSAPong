@@ -10,6 +10,7 @@ rocks = asteroid.buildAsteroidField(1)
 keys = key.KeyStateHandler()
 win.push_handlers(keys)
 
+respawncounter = -1
 level = 1
 score = 0
 lives = 3
@@ -17,7 +18,13 @@ score_text = pyglet.text.Label(text='', x=0, y=585)
 
 
 def update(dt):
-	global rocks, score, lives, level
+	global rocks, score, lives, level, respawncounter
+	if respawncounter > 0:
+		respawncounter -= 1
+		return
+	if respawncounter == 0:
+		ball.reset()
+		respawncounter = -1
 	ball.update(dt)
 	for i in rocks:
 		i.update(dt)
@@ -36,10 +43,10 @@ def update(dt):
 	rocks = [i for i in rocks if i is not None]
 	for rock in rocks:
 		if ball.collide(rock):
-			ball.reset()
 			lives -= 1
+			ball.x = 10000
+			respawncounter = 240
 	if not rocks:
-		ball.reset()
 		rocks = asteroid.buildAsteroidField(level)
 		level += 1
 	score_text.text = str(score)
@@ -66,7 +73,8 @@ def on_mouse_motion(x, y, dx, dy):
 def on_draw():
 	win.clear()
 	keyupdate()
-	ball.draw()
+	if respawncounter <= 0:
+		ball.draw()
 	score_text.draw()
 
 	for i in range(lives):
