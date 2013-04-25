@@ -13,7 +13,7 @@ win.push_handlers(keys)
 level = 1
 score = 0
 lives = 3
-score_text = pyglet.text.Label(text='', x=0, y=585)
+score_text = pyglet.text.Label(text='', x=0, y=590)
 
 
 def update(dt):
