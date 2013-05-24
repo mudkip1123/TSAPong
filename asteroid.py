@@ -25,15 +25,15 @@ class Asteroid(lineObject.Thing):
 
 	def update(self, dt):
 		self.rotation += .3
-		if self.vel.magnitude() > (1. / self.size) * 100:
+		if self.vel.magnitude() > 150:
 			self.vel *= .99
 		super(Asteroid, self).update(dt)
 
 	def die(self):
 		if self.size == 1:
 			return None, None
-		cv1 = self.vel.rotate(45) * 4.5
-		cv2 = self.vel.rotate(-45) * 4.5
+		cv1 = self.vel.rotate(45) * 1.5
+		cv2 = self.vel.rotate(-45) * 1.5
 		child1 = Asteroid(size=self.size / 2, vel=cv1, x=self.x, y=self.y)
 		child2 = Asteroid(size=self.size / 2, vel=cv2, x=self.x, y=self.y)
 		return child1, child2
