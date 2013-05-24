@@ -49,7 +49,7 @@ class Ship(lineObject.Thing):
 		by = self.y + 20 * math.sin(math.radians(self.rotation))
 		self.rounds.append(bullet.Bullet(x=bx, y=by, vel=self.vel, rotation=self.rotation))
 		self.shotTimer = self.shotDelay
-		# load.shot_sound.play()
+		load.shot_sound.play()
 
 	def draw(self):
 		for i in self.rounds:
