@@ -3,7 +3,6 @@ from pyglet.window import key
 
 import playerShip
 import asteroid
-import physics
 
 win = pyglet.window.Window(width=800, height=600)
 ball = playerShip.Ship(x=400, y=300, scale=10)
@@ -13,7 +12,7 @@ win.push_handlers(keys)
 
 score = 0
 lives = 3
-score_text = pyglet.text.Label(text='', x=0, y=590)
+score_text = pyglet.text.Label(text='', x=0, y=585)
 
 
 def update(dt):
